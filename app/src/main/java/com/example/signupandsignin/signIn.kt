@@ -24,19 +24,20 @@ class signIn : AppCompatActivity() { //class for signin
         login.setOnClickListener {
             s1=mobile.text.toString()
             s2=password.text.toString()
+            if((s1!=null)&&(s2!=null)){
             var dbhr = DBHlpr(applicationContext)
             var x=dbhr.checkpassword(s1)
 
-            if(x.equals(s2)){//send value to check password function in DBHlpr class
+            if(x.equals(s2)) {//send value to check password function in DBHlpr class
 
                 Toast.makeText(applicationContext, "signIn success", Toast.LENGTH_SHORT).show()
-                 intent = Intent(applicationContext, profilePage::class.java)
-                intent.putExtra("note",s1)
+                intent = Intent(applicationContext, profilePage::class.java)
+                intent.putExtra("note", s1)
                 startActivity(intent)
 
             }else{
                 Toast.makeText(applicationContext, "please enter a valid number", Toast.LENGTH_SHORT).show()//to show error message
-            }
+            }}
         }
 
 
